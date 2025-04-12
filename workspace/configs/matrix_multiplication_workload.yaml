@@ -1,0 +1,72 @@
+problem:
+  - shape:
+      name: Mul1
+      dimensions: [ A, B, C ]
+      data_spaces:
+      - name: Input
+        dimensions: [ IV_H, IV_W ]
+        projection: '[ A, B ]'
+      - name: Matrix_1
+        dimensions: [ M1_H, M1_W ]
+        projection: '[ B, C ]'
+      - name: OutputVector1
+        dimensions: [ O1V_H, O1V_W ]
+        projection: '[ A, C ]'
+        read_write: True
+
+    instance: >-
+      0 <= A < 128 and 0 <= B <= 128 and 0 <= C <= 128 
+
+  - shape:
+      name: Mul2
+      dimensions: [ A, C, D ]
+      data_spaces:
+      - name: OutputVector1
+        dimensions: [ O1V_H, O1V_W ]
+        projection: '[ A, C ]'
+      - name: Matrix_2
+        dimensions: [ M2_H, M2_W ]
+        projection: '[ C, D ]'
+      - name: OutputVector2
+        dimensions: [ O2V_H, O2V_W ]
+        projection: '[ A, D ]'
+        read_write: True
+
+    instance: >-
+      0 <= A < 128 and 0 <= C <= 128 and 0 <= D <= 128
+
+  - shape:
+      name: Mul3
+      dimensions: [ A, D, E ]
+      data_spaces:
+      - name: OutputVector2
+        dimensions: [ O2V_H, O2V_W ]
+        projection: '[ A, D ]'
+      - name: Matrix_3
+        dimensions: [ M3_H, M3_W ]
+        projection: '[ D, E ]'
+      - name: OutputVector3
+        dimensions: [ O3V_H, O3V_W ]
+        projection: '[ A, E ]'
+        read_write: True
+
+    instance: >-
+      0 <= A < 128 and 0 <= D <= 128 and 0 <= E <= 128
+
+  - shape:
+      name: Mul4
+      dimensions: [ A, E, F ]
+      data_spaces:
+      - name: OutputVector3
+        dimensions: [ O3V_H, O3V_W ]
+        projection: '[ A, E ]'
+      - name: Matrix_4
+        dimensions: [ M4_H, M4_W ]
+        projection: '[ E, F ]'
+      - name: OutputVector4
+        dimensions: [ O4V_H, O4V_W ]
+        projection: '[ A, F ]'
+        read_write: True
+
+    instance: >-
+      0 <= A < 128 and 0 <= E <= 128 and 0 <= F <= 128
