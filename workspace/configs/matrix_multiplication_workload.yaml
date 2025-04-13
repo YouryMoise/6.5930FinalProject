@@ -29,46 +29,46 @@ problem:
         projection: '[ B2, C2 ]'
       - name: OutputVector2
         dimensions: [ O2V_H, O2V_W ]
-        projection: '[ A2, C2 ]'
+        projection: '[ A2, B2 ]'
         read_write: True
 
-  #   instance: >-
-  #     0 <= A2 < 128 and 0 <= B2 < 128 and 0 <= C2 < 128
+    instance: >-
+      0 <= A2 < 128 and 0 <= B2 < 128 and 0 <= C2 < 128
 
 
-  # - shape:
-  #     name: Mul3
-  #     dimensions: [ A3, B3, C3 ]
-  #     data_spaces:
-  #     - name: OutputVector2
-  #       dimensions: [ O2V_H, O2V_W ]
-  #       projection: '[ A3, B3 ]'
-  #     - name: Matrix_2
-  #       dimensions: [ M3_H, M3_W ]
-  #       projection: '[ B3, C3 ]'
-  #     - name: OutputVector2
-  #       dimensions: [ O3V_H, O3V_W ]
-  #       projection: '[ A3, C3 ]'
-  #       read_write: True
+  - shape:
+      name: Mul3
+      dimensions: [ A3, B3, C3 ]
+      data_spaces:
+      - name: OutputVector2
+        dimensions: [ O2V_H, O2V_W ]
+        projection: '[ A3, B3 ]'
+      - name: Matrix_3
+        dimensions: [ M3_H, M3_W ]
+        projection: '[ B3, C3 ]'
+      - name: OutputVector3
+        dimensions: [ O3V_H, O3V_W ]
+        projection: '[ A3, C3 ]'
+        read_write: True
 
-  #   instance: >-
-  #     0 <= A3 < 128 and 0 <= B3 < 128 and 0 <= C3 < 128
+    instance: >-
+      0 <= A3 < 128 and 0 <= B3 < 128 and 0 <= C3 < 128
 
 
-  # - shape:
-  #     name: Mul4
-  #     dimensions: [ A4, B4, C4 ]
-  #     data_spaces:
-  #     - name: OutputVector3
-  #       dimensions: [ O3V_H, O3V_W ]
-  #       projection: '[ A4, B4 ]'
-  #     - name: Matrix_2
-  #       dimensions: [ M4_H, M4_W ]
-  #       projection: '[ B4, C4 ]'
-  #     - name: OutputVector2
-  #       dimensions: [ O4V_H, O4V_W ]
-  #       projection: '[ A4, C4 ]'
-  #       read_write: True
+  - shape:
+      name: Mul4
+      dimensions: [ A4, B4, C4 ]
+      data_spaces:
+      - name: OutputVector3
+        dimensions: [ O3V_H, O3V_W ]
+        projection: '[ A4, B4 ]'
+      - name: Matrix_4
+        dimensions: [ M4_H, M4_W ]
+        projection: '[ B4, C4 ]'
+      - name: OutputVector4
+        dimensions: [ O4V_H, O4V_W ]
+        projection: '[ A4, C4 ]'
+        read_write: True
 
-  #   instance: >-
-  #     0 <= A4 < 128 and 0 <= B4 < 128 and 0 <= C4 < 128
+    instance: >-
+      0 <= A4 < 128 and 0 <= B4 < 128 and 0 <= C4 < 128

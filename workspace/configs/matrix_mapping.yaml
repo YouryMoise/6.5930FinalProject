@@ -3,7 +3,7 @@ mapping:
   nodes:
   - type: storage
     target: 0  # CHRIS
-    dspace: [Input, Matrix_1, OutputVector1]
+    dspace: [Input, Matrix_1, OutputVector1, Matrix_2, OutputVector2]
     # Matrix_2, Matrix_3, Matrix_4, OutputVector1, OutputVector2, OutputVector3,OutputVector4]
   - type: sequential  
     branches:
@@ -29,61 +29,61 @@ mapping:
         target: 2  # CHRIS
     # corresponds to the b,i,o loop order on page 6
     # input rows, input cols, weight cols 
-    # - - type: storage 
-    #     target: 1
-    #     dspace: [OutputVector1, OutputVector2]
-    #   - type: temporal
-    #     rank: A
-    #     tile_shape: 1
-    #   - type: storage
-    #     target: 1
-    #     dspace: [Matrix_2]
-    #   - type: temporal
-    #     rank: C
-    #     tile_shape: 1
-    #   - type: temporal
-    #     rank: D
-    #     tile_shape: 1
-    #   - type: compute
-    #     einsum: Mul2
-    #     target: 2  # CHRIS
+    - - type: storage 
+        target: 1
+        dspace: [OutputVector1, OutputVector2]
+      - type: temporal
+        rank: A2
+        tile_shape: 1
+      - type: storage
+        target: 1
+        dspace: [Matrix_2]
+      - type: temporal
+        rank: B2
+        tile_shape: 1
+      - type: temporal
+        rank: C2
+        tile_shape: 1
+      - type: compute
+        einsum: Mul2
+        target: 2  # CHRIS
 
-    # # input rows, weight cols, input cols
-    # - - type: storage 
-    #     target: 1
-    #     dspace: [OutputVector2, OutputVector3]
-    #   - type: temporal
-    #     rank: A
-    #     tile_shape: 1
-    #   - type: storage
-    #     target: 1
-    #     dspace: [Matrix_3]
-    #   - type: temporal
-    #     rank: E
-    #     tile_shape: 1
-    #   - type: temporal
-    #     rank: D
-    #     tile_shape: 1
-    #   - type: compute
-    #     einsum: Mul3
-    #     target: 2  # CHRIS
+    # input rows, weight cols, input cols
+    - - type: storage 
+        target: 1
+        dspace: [OutputVector2, OutputVector3]
+      - type: temporal
+        rank: A3
+        tile_shape: 1
+      - type: storage
+        target: 1
+        dspace: [Matrix_3]
+      - type: temporal
+        rank: C3
+        tile_shape: 1
+      - type: temporal
+        rank: B3
+        tile_shape: 1
+      - type: compute
+        einsum: Mul3
+        target: 2  # CHRIS
 
-    # # input rows, input cols, weight cols 
-    # - - type: storage 
-    #     target: 1
-    #     dspace: [OutputVector3, OutputVector4]
-    #   - type: temporal
-    #     rank: A
-    #     tile_shape: 1
-    #   - type: storage
-    #     target: 1
-    #     dspace: [Matrix_4]
-    #   - type: temporal
-    #     rank: E
-    #     tile_shape: 1
-    #   - type: temporal
-    #     rank: F
-    #     tile_shape: 1
-    #   - type: compute
-    #     einsum: Mul4
-    #     target: 2  # CHRIS
+    # input rows, input cols, weight cols 
+    - - type: storage 
+        target: 1
+        dspace: [OutputVector3, OutputVector4]
+      - type: temporal
+        rank: A4
+        tile_shape: 1
+      - type: storage
+        target: 1
+        dspace: [Matrix_4]
+      - type: temporal
+        rank: B4
+        tile_shape: 1
+      - type: temporal
+        rank: C4
+        tile_shape: 1
+      - type: compute
+        einsum: Mul4
+        target: 2  # CHRIS
