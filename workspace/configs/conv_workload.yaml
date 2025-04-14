@@ -1,0 +1,20 @@
+problem:
+  - shape:
+      name: Conv1
+      dimensions: [ C, M, R, S, N, P, Q ]
+      
+      data_spaces:
+      
+      - name: Input
+        dimensions: [ I_batches, I_Channels, I_Height, I_Width ]
+        projection: '[ N, C, P + R, Q + S]'
+      - name: Filter_1
+        dimensions: [ F_batches, F_channels, F_Height, F_Width ]
+        projection: '[ M, C, R, S ]'
+      - name: Output
+        dimensions: [ O_in_b, O_out_b, O_Height, O_Width ]
+        projection: '[ N, M, P, Q ]'
+        read_write: True
+
+    instance: >-
+      0 <= N < 2 and 0 <= M < 4 and 0 <= P < 128 and 0 <= Q < 128 and 0 <= C < 128 and 0 <= R < 128 and 0 <= S < 128 
