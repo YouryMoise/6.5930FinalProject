@@ -1,7 +1,3 @@
-variables:
-  global_cycle_seconds: 1e-9
-  technology: "45nm"
-
 architecture:
   version: 0.4
   nodes:
@@ -23,6 +19,38 @@ architecture:
         block_size: 32
         word_bits: 8
         datawidth: 8
+    - !Container
+      name: system_arch
+      attributes:
+        # Top-level attributes inherited by all components unless overridden
+        technology: "45nm"
+        global_cycle_seconds: 1e-9
+        datawidth: 16
+      
+
+    - !Component
+      name: DRAM # offchip DRAM is the source of all datatypes
+      class: DRAM # assume DRAM is large enough to store all the data, so no depth specification needed
+      attributes:
+        width: 64 # width in bits
+        datawidth: 16
+      required_actions: ['read', 'write']
+
+    - !Container
+      name: chip
+
+    - !Container
+      name: NNengine
+      spatial: { meshX: 16, meshY: 16 }
+
+    - !Component
+      name: global_buffer
+      class: SRAM
+      attributes:
+        width: 128
+        depth: 2048
+        datawidth: 16
+        n_banks: 1
         n_rdwr_ports: 2
         n_rd_ports: 0
         n_wr_ports: 0
