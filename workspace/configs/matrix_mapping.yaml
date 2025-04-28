@@ -7,7 +7,7 @@ mapping:
     target: 0  # CHRIS
     dspace: [Input, Matrix_1, OutputVector1, Matrix_2, OutputVector2]
     # Matrix_2, Matrix_3, Matrix_4, OutputVector1, OutputVector2, OutputVector3,OutputVector4]
-  - type: pipeline  
+  - type: sequential  
     branches:
     # corresponds to the b,o,i loop order on page 6
     # input rows, weight cols, input cols
