@@ -15,7 +15,7 @@ architecture:
     class: SRAM
     attributes:
       depth: 8192
-      width: 256
+      width: 64
       block_size: 32
       word_bits: 8
       datawidth: 8
@@ -65,16 +65,16 @@ architecture:
       width: 16
       datawidth: 8
 
-  - !Component
-    name: LocalBuffer
-    class: SRAM
-    attributes:
-      depth: 8192
-      width: 256
-      block_size: 32
-      word_bits: 8
-      datawidth: 8
-    required_actions: ['read', 'write']
+  # - !Component
+  #   name: LocalBuffer
+  #   class: SRAM
+  #   attributes:
+  #     depth: 8192
+  #     width: 256
+  #     block_size: 32
+  #     word_bits: 8
+  #     datawidth: 8
+  #   required_actions: ['read', 'write']
 
 
   - !Container

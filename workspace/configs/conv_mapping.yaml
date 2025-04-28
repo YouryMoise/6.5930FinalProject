@@ -37,7 +37,7 @@ mapping:
             tile_shape: 1
           - type: compute
             einsum: Conv1
-            target: 2 # CHRIS
+            target: 3 # CHRIS
 
         - - type: storage # CHRIS
             target: 1
@@ -68,7 +68,7 @@ mapping:
             tile_shape: 1
           - type: compute
             einsum: Conv2
-            target: 2 # CHRIS
+            target: 3 # CHRIS
 
         - - type: storage # CHRIS
             target: 1
@@ -99,5 +99,5 @@ mapping:
             tile_shape: 1
           - type: compute
             einsum: Conv3
-            target: 2 # CHRIS
+            target: 3 # CHRIS
 
