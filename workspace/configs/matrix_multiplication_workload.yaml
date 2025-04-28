@@ -15,7 +15,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= A < 16 and 0 <= B < 16 and 0 <= C < 16 
+      0 <= A < 128 and 0 <= B < 128 and 0 <= C < 128 
 
   - shape:
       name: Mul2
@@ -33,7 +33,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= A2 < 16 and 0 <= B2 < 16 and 0 <= C2 < 16
+      0 <= A2 < 128 and 0 <= B2 < 128 and 0 <= C2 < 128
 
 
   - shape:
@@ -52,7 +52,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= A3 < 16 and 0 <= B3 < 16 and 0 <= C3 < 16
+      0 <= A3 < 128 and 0 <= B3 < 128 and 0 <= C3 < 128
 
 
   - shape:
@@ -71,4 +71,4 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= A4 < 16 and 0 <= B4 < 16 and 0 <= C4 < 16
+      0 <= A4 < 128 and 0 <= B4 < 128 and 0 <= C4 < 128
