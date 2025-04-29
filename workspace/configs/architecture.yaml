@@ -1,138 +1,171 @@
+variables:
+  global_cycle_seconds: 1e-9
+  technology: "45nm"
+
 architecture:
   version: 0.4
   nodes:
-
   - !Component
     name: MainMemory
     class: DRAM
     attributes: {width: 256, block_size: 32, word_bits: 8, datawidth: 8}
     required_actions: ['read', 'write']
-
-
-
   - !Component
     name: IntermediateBuffer
     class: SRAM
     attributes:
-      depth: 8192
-      width: 64
-      block_size: 32
-      word_bits: 8
-      datawidth: 8
-  
-  # - !Container
-  #   name: system_arch
-  #   attributes:
-  #     # Top-level attributes inherited by all components unless overridden
-  #     technology: "45nm"
-  #     global_cycle_seconds: 1e-9
-  #     datawidth: 16
-    
-
-  - !Component
-    name: DRAM # offchip DRAM is the source of all datatypes
-    class: DRAM # assume DRAM is large enough to store all the data, so no depth specification needed
-    attributes:
-      width: 64 # width in bits
-      datawidth: 16
+        depth: 8192
+        width: 256
+        block_size: 32
+        word_bits: 8
+        datawidth: 8
+        n_rdwr_ports: 2
+        n_rd_ports: 0
+        n_wr_ports: 0
     required_actions: ['read', 'write']
-
-  # - !Container
-  #   name: chip
-
-  # - !Container
-  #   name: NNengine
-  #   spatial: { meshX: 16, meshY: 16 }
-
-  - !Component
-    name: global_buffer
-    class: SRAM
-    attributes:
-      width: 128
-      depth: 2048
-      datawidth: 16
-      n_banks: 1
-      n_rdwr_ports: 2
-      n_rd_ports: 0
-      n_wr_ports: 0
-    required_actions: ['read', 'write']
-
-  - !Container
-    name: nnEngine
-    spatial: {meshX: 16, meshY: 16}
-    attributes:
-      depth: 16
-      width: 16
-      datawidth: 8
-
-  # - !Component
-  #   name: LocalBuffer
-  #   class: SRAM
-  #   attributes:
-  #     depth: 8192
-  #     width: 256
-  #     block_size: 32
-  #     word_bits: 8
-  #     datawidth: 8
-  #   required_actions: ['read', 'write']
-
-
-  - !Container
-    name: PE
-    spatial: {meshX: 8, meshY: 8}
-    attributes:
-      depth: 8
-      width: 8
-      datawidth: 8
-    
-    
-  
-  - !Component 
-    name: input_reg
-    class: regfile
-    attributes:
-      depth: 16
-      width: 16
-      datawidth: 8
-    constraints:
-      dataspace: {
-        keep: [Input, OutputVector1, OutputVector2, OutputVector3],
-        bypass: [Matrix_1, Matrix_2, Matrix_3, Matrix_4, OutputVector4]
-        }
-
-  - !Component 
-    name: weights_reg
-    class: regfile
-    attributes:
-      depth: 16
-      width: 16
-      datawidth: 8
-    constraints:
-      dataspace: {
-        keep: [Matrix_1, Matrix_2, Matrix_3, Matrix_4],
-        bypass: [Input, OutputVector1, OutputVector2, OutputVector3, OutputVector4]
-        }
-
-  - !Component # Output scratchpad
-    name: output_reg
-    class: regfile
-    attributes:
-      depth: 16
-      width: 16
-      datawidth: 8
-    constraints:
-      dataspace: {
-        keep: [OutputVector1, OutputVector2, OutputVector3, OutputVector4],
-        bypass: [Matrix_1, Matrix_2, Matrix_3, Matrix_4, Input]
-        }
-
-
-
   - !Component
     name: MACC
     class: intmac
     attributes:
-      datawidth: 8
-      width: 8
-      cycle_time: 1e-9
+        datawidth: 8
+        width: 8
+        cycle_time: 1e-9
     required_actions: ['compute']
+# architecture:
+#   version: 0.4
+#   nodes:
+
+#   - !Component
+#     name: MainMemory
+#     class: DRAM
+#     attributes: {width: 256, block_size: 32, word_bits: 8, datawidth: 8}
+#     required_actions: ['read', 'write']
+
+
+
+#   - !Component
+#     name: IntermediateBuffer
+#     class: SRAM
+#     attributes:
+#       depth: 8192
+#       width: 64
+#       block_size: 32
+#       word_bits: 8
+#       datawidth: 8
+  
+#   # - !Container
+#   #   name: system_arch
+#   #   attributes:
+#   #     # Top-level attributes inherited by all components unless overridden
+#   #     technology: "45nm"
+#   #     global_cycle_seconds: 1e-9
+#   #     datawidth: 16
+    
+
+#   - !Component
+#     name: DRAM # offchip DRAM is the source of all datatypes
+#     class: DRAM # assume DRAM is large enough to store all the data, so no depth specification needed
+#     attributes:
+#       width: 64 # width in bits
+#       datawidth: 16
+#     required_actions: ['read', 'write']
+
+#   # - !Container
+#   #   name: chip
+
+#   # - !Container
+#   #   name: NNengine
+#   #   spatial: { meshX: 16, meshY: 16 }
+
+#   - !Component
+#     name: global_buffer
+#     class: SRAM
+#     attributes:
+#       width: 128
+#       depth: 2048
+#       datawidth: 16
+#       n_banks: 1
+#       n_rdwr_ports: 2
+#       n_rd_ports: 0
+#       n_wr_ports: 0
+#     required_actions: ['read', 'write']
+
+#   - !Container
+#     name: nnEngine
+#     spatial: {meshX: 16, meshY: 16}
+#     attributes:
+#       depth: 16
+#       width: 16
+#       datawidth: 8
+
+#   # - !Component
+#   #   name: LocalBuffer
+#   #   class: SRAM
+#   #   attributes:
+#   #     depth: 8192
+#   #     width: 256
+#   #     block_size: 32
+#   #     word_bits: 8
+#   #     datawidth: 8
+#   #   required_actions: ['read', 'write']
+
+
+#   - !Container
+#     name: PE
+#     spatial: {meshX: 8, meshY: 8}
+#     attributes:
+#       depth: 8
+#       width: 8
+#       datawidth: 8
+    
+    
+  
+#   - !Component 
+#     name: input_reg
+#     class: regfile
+#     attributes:
+#       depth: 16
+#       width: 16
+#       datawidth: 8
+#     constraints:
+#       dataspace: {
+#         keep: [Input, OutputVector1, OutputVector2, OutputVector3],
+#         bypass: [Matrix_1, Matrix_2, Matrix_3, Matrix_4, OutputVector4]
+#         }
+
+#   - !Component 
+#     name: weights_reg
+#     class: regfile
+#     attributes:
+#       depth: 16
+#       width: 16
+#       datawidth: 8
+#     constraints:
+#       dataspace: {
+#         keep: [Matrix_1, Matrix_2, Matrix_3, Matrix_4],
+#         bypass: [Input, OutputVector1, OutputVector2, OutputVector3, OutputVector4]
+#         }
+
+#   - !Component # Output scratchpad
+#     name: output_reg
+#     class: regfile
+#     attributes:
+#       depth: 16
+#       width: 16
+#       datawidth: 8
+#     constraints:
+#       dataspace: {
+#         keep: [OutputVector1, OutputVector2, OutputVector3, OutputVector4],
+#         bypass: [Matrix_1, Matrix_2, Matrix_3, Matrix_4, Input]
+#         }
+
+
+
+#   - !Component
+#     name: MACC
+#     class: intmac
+#     attributes:
+#       datawidth: 8
+#       width: 8
+#       cycle_time: 1e-9
+#     required_actions: ['compute']

@@ -4,6 +4,12 @@ mapping:
     - type: storage
       target: 0 # CHRIS
       dspace: [Input, Filter_1, Output, Filter_2, Output2, Filter_3, Output3]
+    - type: spatial
+      rank: N2
+      tile_shape: 1
+    - type: spatial
+      rank: C2
+      tile_shape: 1
     - type: sequential
       branches:
         # corresponds to the b,o,i loop order on page 6
@@ -11,15 +17,15 @@ mapping:
         - - type: storage # CHRIS
             target: 1
             dspace: [Input, Filter_1]
-          - type: temporal
-            rank: N
-            tile_shape: 1
+          # - type: temporal
+          #   rank: N
+          #   tile_shape: 1
           - type: storage
             target: 1
             dspace: [Output]
-          - type: temporal
-            rank: M
-            tile_shape: 1
+          # - type: temporal
+          #   rank: M
+          #   tile_shape: 1
           - type: temporal
             rank: Q
             tile_shape: 1
@@ -42,9 +48,9 @@ mapping:
         - - type: storage # CHRIS
             target: 1
             dspace: [Output, Filter_2]
-          - type: temporal
-            rank: N2
-            tile_shape: 1
+          # - type: temporal
+          #   rank: N2
+          #   tile_shape: 1
           - type: storage
             target: 1
             dspace: [Output2]
@@ -57,9 +63,9 @@ mapping:
           - type: temporal
             rank: P2
             tile_shape: 1
-          - type: temporal
-            rank: C2
-            tile_shape: 1
+          # - type: temporal
+          #   rank: C2
+          #   tile_shape: 1
           - type: temporal
             rank: R2
             tile_shape: 1
@@ -70,34 +76,34 @@ mapping:
             einsum: Conv2
             target: 3 # CHRIS
 
-        - - type: storage # CHRIS
-            target: 1
-            dspace: [Output2, Filter_3]
-          - type: temporal
-            rank: N3
-            tile_shape: 1
-          - type: storage
-            target: 1
-            dspace: [Output3]
-          - type: temporal
-            rank: M3
-            tile_shape: 1
-          - type: temporal
-            rank: Q3
-            tile_shape: 1
-          - type: temporal
-            rank: P3
-            tile_shape: 1
-          - type: temporal
-            rank: C3
-            tile_shape: 1
-          - type: temporal
-            rank: R3
-            tile_shape: 1
-          - type: temporal
-            rank: S3
-            tile_shape: 1
-          - type: compute
-            einsum: Conv3
-            target: 3 # CHRIS
+        # - - type: storage # CHRIS
+        #     target: 1
+        #     dspace: [Output2, Filter_3]
+        #   - type: temporal
+        #     rank: N3
+        #     tile_shape: 1
+        #   - type: storage
+        #     target: 1
+        #     dspace: [Output3]
+        #   - type: temporal
+        #     rank: M3
+        #     tile_shape: 1
+        #   - type: temporal
+        #     rank: Q3
+        #     tile_shape: 1
+        #   - type: temporal
+        #     rank: P3
+        #     tile_shape: 1
+        #   - type: temporal
+        #     rank: C3
+        #     tile_shape: 1
+        #   - type: temporal
+        #     rank: R3
+        #     tile_shape: 1
+        #   - type: temporal
+        #     rank: S3
+        #     tile_shape: 1
+        #   - type: compute
+        #     einsum: Conv3
+        #     target: 3 # CHRIS
 
