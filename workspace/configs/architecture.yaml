@@ -22,9 +22,9 @@ architecture:
     required_actions: ['read', 'write']
   - !Container
     name: nnEngine
-    spatial: {meshX: 4, meshY: 4}
+    spatial: {meshX: 4, meshY: 4} # think this is what matters
     attributes:
-      depth: 16
+      depth: 16 # these two don't matter?
       width: 16
       datawidth: 8
   - !Container
