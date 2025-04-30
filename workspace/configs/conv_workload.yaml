@@ -17,7 +17,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= N < 2 and 0 <= M < 4 and 0 <= P < 128 and 0 <= Q < 128 and 0 <= C < 128 and 0 <= R < 128 and 0 <= S < 128
+      0 <= N < 128 and 0 <= M < 128 and 0 <= P < 128 and 0 <= Q < 128 and 0 <= C < 128 and 0 <= R < 128 and 0 <= S < 128
 
   - shape:
       name: Conv2
@@ -37,25 +37,25 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= N2 < 2 and 0 <= M2 < 4 and 0 <= P2 < 128 and 0 <= Q2 < 128 and 0 <= C2 < 128 and 0 <= R2 < 128 and 0 <= S2 < 128
+      0 <= N2 < 128 and 0 <= M2 < 128 and 0 <= P2 < 128 and 0 <= Q2 < 128 and 0 <= C2 < 128 and 0 <= R2 < 128 and 0 <= S2 < 128
 
-  - shape:
-      name: Conv3
-      dimensions: [ C3, M3, R3, S3, N3, P3, Q3 ]
+  # - shape:
+  #     name: Conv3
+  #     dimensions: [ C3, M3, R3, S3, N3, P3, Q3 ]
       
-      data_spaces:
+  #     data_spaces:
       
-      - name: Output2
-        dimensions: [ I_batches3, I_Channels3, I_Height3, I_Width3 ]
-        projection: '[ N3, C3, P3 + R3, Q3 + S3]'
-      - name: Filter_3
-        dimensions: [ F_batches3, F_channels3, F_Height3, F_Width3 ]
-        projection: '[ M3, C3, R3, S3 ]'
-      - name: Output3
-        dimensions: [ O_in_b3, O_out_b3, O_Height3, O_Width3 ]
-        projection: '[ N3, M3, P3, Q3 ]'
-        read_write: True
+  #     - name: Output2
+  #       dimensions: [ I_batches3, I_Channels3, I_Height3, I_Width3 ]
+  #       projection: '[ N3, C3, P3 + R3, Q3 + S3]'
+  #     - name: Filter_3
+  #       dimensions: [ F_batches3, F_channels3, F_Height3, F_Width3 ]
+  #       projection: '[ M3, C3, R3, S3 ]'
+  #     - name: Output3
+  #       dimensions: [ O_in_b3, O_out_b3, O_Height3, O_Width3 ]
+  #       projection: '[ N3, M3, P3, Q3 ]'
+  #       read_write: True
 
-    instance: >-
-      0 <= N3 < 2 and 0 <= M3 < 4 and 0 <= P3 < 128 and 0 <= Q3 < 128 and 0 <= C3 < 128 and 0 <= R3 < 128 and 0 <= S3 < 128 
+  #   instance: >-
+  #     0 <= N3 < 2 and 0 <= M3 < 4 and 0 <= P3 < 128 and 0 <= Q3 < 128 and 0 <= C3 < 128 and 0 <= R3 < 128 and 0 <= S3 < 128 
 
