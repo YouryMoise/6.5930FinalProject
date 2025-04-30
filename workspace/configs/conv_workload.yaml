@@ -1,3 +1,5 @@
+# set R, Q, Q to 1 to simulate matrix multiplication
+
 problem:
   - shape:
       name: Conv1

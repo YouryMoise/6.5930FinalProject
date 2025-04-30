@@ -44,7 +44,7 @@ architecture:
     attributes:
         depth: 16
         datawidth: 8
-        width: 8
+        width: 64
     constraints:
       dataspace: {
         keep: [Input, OutputVector1, OutputVector2, OutputVector3],
@@ -56,7 +56,7 @@ architecture:
     class: regfile
     attributes:
         depth: 16
-        width: 16
+        width: 64
         datawidth: 8
     constraints:
       dataspace: {
@@ -69,7 +69,7 @@ architecture:
     class: regfile
     attributes:
         depth: 16
-        width: 16
+        width: 64
         datawidth: 8
     constraints:
       dataspace: {
