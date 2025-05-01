@@ -1,154 +1,103 @@
-mapping:
-  type: fused
-  nodes:
-    - type: storage
-      target: 0 # CHRIS
-      dspace: [Input, Filter_1, Filter_2, Output2]
-    # - type: temporal
-    #   rank: N2
-    #   tile_shape: 1
-    - type: temporal
-      rank: C2
-      tile_shape: 32
-    - type: storage
-      target: 1
-      dspace: [Output]
-    - type: pipeline
-      branches:
-        # corresponds to the b,o,i loop order on page 6
-        # input rows, weight cols, input cols
-        - - type: spatial  # Map over nnEngine meshX
-            rank: M
-            tile_shape: 1 # size=32, divide into 4 tiles
-          - type: spatial  # Map over nnEngine meshY
-            rank: C
-            tile_shape: 4  # size=128, divide into 2*8 tiles
-          # - type: spatial  # Map over PE meshX
-          #   rank: M
-          #   tile_shape: 1
-          # - type: spatial  # Map over PE meshY
-          #   rank: C
-          #   tile_shape: 4  # size=8 (see above), divide into 8 tiles
-          - type: storage # CHRIS
-            target: 4
-            dspace: [Input]
-          - type: storage
-            target: 5
-            dspace: [Filter_1]
-        # - - type: storage # CHRIS
-        #     target: 5
-        #     dspace: [Filter_1]
-          # - type: temporal
-          #   rank: N
-          #   tile_shape: 4
-          - type: storage
-            target: 6
-            dspace: [Output]
-          # - type: temporal
-          #   rank: M
-          #   tile_shape: 4
-          - type: temporal
-            rank: Q
-            tile_shape: 1
-          - type: temporal
-            rank: P
-            tile_shape: 1
-          - type: temporal
-            rank: C
-            tile_shape: 1
-          - type: temporal
-            rank: M
-            tile_shape: 1
-          - type: temporal
-            rank: R
-            tile_shape: 1
-          - type: temporal
-            rank: S
-            tile_shape: 1
-          - type: temporal
-            rank: N
-            tile_shape: 1
-          - type: compute
-            einsum: Conv1
-            target: 3 # CHRIS
-
-        - - type: spatial  # Map over nnEngine meshX
-            rank: M2
-            tile_shape: 4 # problem size=128, divide into 4 tiles
-          - type: spatial  # Map over nnEngine meshY
-            rank: C2
-            tile_shape: 1  # size=32, divide into 4 tiles
-          # - type: spatial  # Map over PE meshX
-          #   rank: M2
-          #   tile_shape: 4
-          # - type: spatial  # Map over PE meshY
-          #   rank: C2
-          #   tile_shape: 1  # size=8 (see above), divide into 8 tiles
-          - type: storage # CHRIS
-            target: 4
-            dspace: [Output]
-          - type: storage
-            target: 5
-            dspace: [Filter_2]
-          # - type: temporal
-          #   rank: N2
-          #   tile_shape: 4
-          - type: storage
-            target: 6
-            dspace: [Output2]
-          - type: temporal
-            rank: M2
-            tile_shape: 1
-          - type: temporal
-            rank: Q2
-            tile_shape: 1
-          - type: temporal
-            rank: P2
-            tile_shape: 1
-          - type: temporal
-            rank: C2
-            tile_shape: 1
-          - type: temporal
-            rank: R2
-            tile_shape: 1
-          - type: temporal
-            rank: S2
-            tile_shape: 1
-          - type: temporal
-            rank: N2
-            tile_shape: 1
-          - type: compute
-            einsum: Conv2
-            target: 3 # CHRIS
-
-        # - - type: storage # CHRIS
-        #     target: 1
-        #     dspace: [Output2, Filter_3]
-        #   - type: temporal
-        #     rank: N3
-        #     tile_shape: 4
-        #   - type: storage
-        #     target: 1
-        #     dspace: [Output3]
-        #   - type: temporal
-        #     rank: M3
-        #     tile_shape: 4
-        #   - type: temporal
-        #     rank: Q3
-        #     tile_shape: 4
-        #   - type: temporal
-        #     rank: P3
-        #     tile_shape: 4
-        #   - type: temporal
-        #     rank: C3
-        #     tile_shape: 4
-        #   - type: temporal
-        #     rank: R3
-        #     tile_shape: 4
-        #   - type: temporal
-        #     rank: S3
-        #     tile_shape: 4
-        #   - type: compute
-        #     einsum: Conv3
-        #     target: 3 # CHRIS
-
+"mapping":
+  "nodes":
+  - "dspace":
+    - "Input"
+    - "Filter_1"
+    - "Filter_2"
+    - "Output2"
+    "target": 0
+    "type": "storage"
+  - "rank": "C2"
+    "tile_shape": 32
+    "type": "temporal"
+  - "dspace":
+    - "Output"
+    "target": 1
+    "type": "storage"
+  - "branches":
+    - - "rank": "M"
+        "tile_shape": 1
+        "type": "spatial"
+      - "rank": "C"
+        "tile_shape": 2.0
+        "type": "spatial"
+      - "dspace":
+        - "Input"
+        "target": 4
+        "type": "storage"
+      - "dspace":
+        - "Filter_1"
+        "target": 5
+        "type": "storage"
+      - "dspace":
+        - "Output"
+        "target": 6
+        "type": "storage"
+      - "rank": "Q"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "P"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "C"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "M"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "R"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "S"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "N"
+        "tile_shape": 1
+        "type": "temporal"
+      - "einsum": "Conv1"
+        "target": 3
+        "type": "compute"
+    - - "rank": "M2"
+        "tile_shape": 2.0
+        "type": "spatial"
+      - "rank": "C2"
+        "tile_shape": 1
+        "type": "spatial"
+      - "dspace":
+        - "Output"
+        "target": 4
+        "type": "storage"
+      - "dspace":
+        - "Filter_2"
+        "target": 5
+        "type": "storage"
+      - "dspace":
+        - "Output2"
+        "target": 6
+        "type": "storage"
+      - "rank": "M2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "Q2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "P2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "C2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "R2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "S2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "rank": "N2"
+        "tile_shape": 1
+        "type": "temporal"
+      - "einsum": "Conv2"
+        "target": 3
+        "type": "compute"
+    "type": "sequential"
+  "type": "fused"
