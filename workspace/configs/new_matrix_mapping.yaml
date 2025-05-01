@@ -99,5 +99,5 @@
       - "einsum": "Conv2"
         "target": 3
         "type": "compute"
-    "type": "sequential"
+    "type": "pipeline"
   "type": "fused"

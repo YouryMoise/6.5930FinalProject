@@ -19,7 +19,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= N < 128 and 0 <= M < 128 and 0 < P <= 1 and 0 < Q <= 1 and 0 <= C < 128 and 0 < R <= 1 and 0 <= S < 128
+      0 <= N < 128 and 0 <= M < 128 and 0 <= P <= 1 and 0 <= Q <= 1 and 0 <= C < 128 and 0 <= R <= 1 and 0 <= S < 128
 
   - shape:
       name: Conv2
@@ -39,7 +39,7 @@ problem:
         read_write: True
 
     instance: >-
-      0 <= N2 < 128 and 0 <= M2 < 128 and 0 < P2 <= 1 and 0 < Q2 <= 1 and 0 <= C2 < 128 and 0 < R2 <= 1 and 0 <= S2 < 128
+      0 <= N2 < 128 and 0 <= M2 < 128 and 0 <= P2 <= 1 and 0 <= Q2 <= 1 and 0 <= C2 < 128 and 0 <= R2 <= 1 and 0 <= S2 < 128
 
   # - shape:
   #     name: Conv3
