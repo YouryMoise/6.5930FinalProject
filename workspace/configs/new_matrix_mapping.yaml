@@ -19,7 +19,7 @@
         "tile_shape": 1
         "type": "spatial"
       - "rank": "C"
-        "tile_shape": 1
+        "tile_shape": 64
         "type": "spatial"
       - "dspace":
         - "Input"
@@ -58,7 +58,7 @@
         "target": 3
         "type": "compute"
     - - "rank": "M2"
-        "tile_shape": 1
+        "tile_shape": 64
         "type": "spatial"
       - "rank": "C2"
         "tile_shape": 1
