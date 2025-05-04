@@ -33,13 +33,13 @@
     "attributes":
       "datawidth": 8
       "depth": 16
-      "meshX": 8
-      "meshY": 8
+      "meshX": 11
+      "meshY": 11
       "width": 16
     "name": "nnEngine"
     "spatial":
-      "meshX": 8
-      "meshY": 8
+      "meshX": 11
+      "meshY": 11
   - !Container
     "attributes":
       "datawidth": 8

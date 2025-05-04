@@ -20,7 +20,7 @@
         "target": 1
         "type": "storage"
       - "rank": "C"
-        "tile_shape": 4
+        "tile_shape": 1
         "type": "spatial"
       - "dspace":
         - "Input"
@@ -60,7 +60,7 @@
         "target": 3
         "type": "compute"
     - - "rank": "M2"
-        "tile_shape": 4
+        "tile_shape": 1
         "type": "spatial"
       - "dspace":
         - "Output"
