@@ -2,6 +2,7 @@
   "nodes":
   - "dspace":
     - "Input"
+    - "Output"
     - "Filter_1"
     - "Filter_2"
     - "Output2"
@@ -10,20 +11,21 @@
   - "rank": "C2"
     "tile_shape": 32
     "type": "temporal"
-  - "dspace":
-    - "Output"
-    "target": 1
-    "type": "storage"
   - "branches":
     - - "rank": "M"
         "tile_shape": 1
         "type": "spatial"
+      - "dspace":
+        - "Output"
+        "target": 1
+        "type": "storage"
       - "rank": "C"
-        "tile_shape": 64
+        "tile_shape": 4
         "type": "spatial"
       - "dspace":
         - "Input"
         "target": 4
+        "tile_shape": 1
         "type": "storage"
       - "dspace":
         - "Filter_1"
@@ -58,8 +60,13 @@
         "target": 3
         "type": "compute"
     - - "rank": "M2"
-        "tile_shape": 64
+        "tile_shape": 4
         "type": "spatial"
+      - "dspace":
+        - "Output"
+        "target": 1
+        "tile_shape": 256
+        "type": "storage"
       - "rank": "C2"
         "tile_shape": 1
         "type": "spatial"
@@ -99,5 +106,5 @@
       - "einsum": "Conv2"
         "target": 3
         "type": "compute"
-    "type": "pipeline"
+    "type": "sequential"
   "type": "fused"

@@ -1,63 +1,71 @@
-# set R, Q, P to 1 to simulate matrix multiplication
-
-problem:
-  - shape:
-      name: Conv1
-      dimensions: [ C, M, R, S, N, P, Q ]
-      
-      data_spaces:
-      
-      - name: Input
-        dimensions: [ I_batches, I_Channels, I_Height, I_Width ]
-        projection: '[ N, C, P + R, Q + S]'
-      - name: Filter_1
-        dimensions: [ F_batches, F_channels, F_Height, F_Width ]
-        projection: '[ M, C, R, S ]'
-      - name: Output
-        dimensions: [ O_in_b, O_out_b, O_Height, O_Width ]
-        projection: '[ N, M, P, Q ]'
-        read_write: True
-
-    instance: >-
-      0 <= N < 128 and 0 <= M < 128 and 0 <= P <= 1 and 0 <= Q <= 1 and 0 <= C < 128 and 0 <= R <= 1 and 0 <= S < 128
-
-  - shape:
-      name: Conv2
-      dimensions: [ C2, M2, R2, S2, N2, P2, Q2 ]
-      
-      data_spaces:
-      
-      - name: Output
-        dimensions: [ I_batches2, I_Channels2, I_Height2, I_Width2 ]
-        projection: '[ N2, C2, P2 + R2, Q2 + S2]'
-      - name: Filter_2
-        dimensions: [ F_batches2, F_channels2, F_Height2, F_Width2 ]
-        projection: '[ M2, C2, R2, S2 ]'
-      - name: Output2
-        dimensions: [ O_in_b2, O_out_b2, O_Height2, O_Width2 ]
-        projection: '[ N2, M2, P2, Q2 ]'
-        read_write: True
-
-    instance: >-
-      0 <= N2 < 128 and 0 <= M2 < 128 and 0 <= P2 <= 1 and 0 <= Q2 <= 1 and 0 <= C2 < 128 and 0 <= R2 <= 1 and 0 <= S2 < 128
-
-  # - shape:
-  #     name: Conv3
-  #     dimensions: [ C3, M3, R3, S3, N3, P3, Q3 ]
-      
-  #     data_spaces:
-      
-  #     - name: Output2
-  #       dimensions: [ I_batches3, I_Channels3, I_Height3, I_Width3 ]
-  #       projection: '[ N3, C3, P3 + R3, Q3 + S3]'
-  #     - name: Filter_3
-  #       dimensions: [ F_batches3, F_channels3, F_Height3, F_Width3 ]
-  #       projection: '[ M3, C3, R3, S3 ]'
-  #     - name: Output3
-  #       dimensions: [ O_in_b3, O_out_b3, O_Height3, O_Width3 ]
-  #       projection: '[ N3, M3, P3, Q3 ]'
-  #       read_write: True
-
-  #   instance: >-
-  #     0 <= N3 < 2 and 0 <= M3 < 4 and 0 <= P3 < 128 and 0 <= Q3 < 128 and 0 <= C3 < 128 and 0 <= R3 < 128 and 0 <= S3 < 128 
-
+"problem":
+- "instance": "0 <= N < 1 and 0 <= M < 1 and 0 <= P <= 64 and 0 <= Q <= 64 and 0 <=\
+    \ C < 1 and 0 <= R <= 1 and 0 <= S < 1"
+  "shape":
+    "data_spaces":
+    - "dimensions":
+      - "I_batches"
+      - "I_Channels"
+      - "I_Height"
+      - "I_Width"
+      "name": "Input"
+      "projection": "[ N, C, P + R, Q + S]"
+    - "dimensions":
+      - "F_batches"
+      - "F_channels"
+      - "F_Height"
+      - "F_Width"
+      "name": "Filter_1"
+      "projection": "[ M, C, R, S ]"
+    - "dimensions":
+      - "O_in_b"
+      - "O_out_b"
+      - "O_Height"
+      - "O_Width"
+      "name": "Output"
+      "projection": "[ N, M, P, Q ]"
+      "read_write": true
+    "dimensions":
+    - "C"
+    - "M"
+    - "R"
+    - "S"
+    - "N"
+    - "P"
+    - "Q"
+    "name": "Conv1"
+- "instance": "0 <= N2 < 1 and 0 <= M2 < 1 and 0 <= P2 <= 64 and 0 <= Q2 <= 64 and\
+    \ 0 <= C2 < 1 and 0 <= R2 <= 1 and 0 <= S2"
+  "shape":
+    "data_spaces":
+    - "dimensions":
+      - "I_batches2"
+      - "I_Channels2"
+      - "I_Height2"
+      - "I_Width2"
+      "name": "Output"
+      "projection": "[ N2, C2, P2 + R2, Q2 + S2]"
+    - "dimensions":
+      - "F_batches2"
+      - "F_channels2"
+      - "F_Height2"
+      - "F_Width2"
+      "name": "Filter_2"
+      "projection": "[ M2, C2, R2, S2 ]"
+    - "dimensions":
+      - "O_in_b2"
+      - "O_out_b2"
+      - "O_Height2"
+      - "O_Width2"
+      "name": "Output2"
+      "projection": "[ N2, M2, P2, Q2 ]"
+      "read_write": true
+    "dimensions":
+    - "C2"
+    - "M2"
+    - "R2"
+    - "S2"
+    - "N2"
+    - "P2"
+    - "Q2"
+    "name": "Conv2"

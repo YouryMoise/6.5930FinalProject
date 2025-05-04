@@ -24,6 +24,7 @@
       - "dspace":
         - "Input"
         "target": 4
+        "tile_shape": 2
         "type": "storage"
       - "dspace":
         - "Filter_1"
@@ -58,7 +59,7 @@
         "target": 3
         "type": "compute"
     - - "rank": "M2"
-        "tile_shape": 1
+        "tile_shape": 2
         "type": "spatial"
       - "rank": "C2"
         "tile_shape": 1
