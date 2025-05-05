@@ -1,6 +1,6 @@
 "problem":
-- "instance": "0 <= N < 1 and 0 <= M < 1 and 0 <= P <= 67 and 0 <= Q <= 67 and 0 <=\
-    \ C < 1 and 0 <= R <= 1 and 0 <= S < 1"
+- "instance": "0 <= N < 1 and 0 <= M < 1 and 0 <= P <= 124 and 0 <= Q <= 124 and 0\
+    \ <= C < 1 and 0 <= R <= 1 and 0 <= S < 1"
   "shape":
     "data_spaces":
     - "dimensions":
@@ -34,7 +34,7 @@
     - "P"
     - "Q"
     "name": "Conv1"
-- "instance": "0 <= N2 < 1 and 0 <= M2 < 1 and 0 <= P2 <= 67 and 0 <= Q2 <= 67 and\
+- "instance": "0 <= N2 < 1 and 0 <= M2 < 1 and 0 <= P2 <= 124 and 0 <= Q2 <= 124 and\
     \ 0 <= C2 < 1 and 0 <= R2 <= 1 and 0 <= S2 < 1"
   "shape":
     "data_spaces":

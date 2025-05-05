@@ -20,7 +20,7 @@
         "target": 1
         "type": "storage"
       - "rank": "C"
-        "tile_shape": 1
+        "tile_shape": 4
         "type": "spatial"
       - "dspace":
         - "Input"
@@ -60,7 +60,7 @@
         "target": 3
         "type": "compute"
     - - "rank": "M2"
-        "tile_shape": 1
+        "tile_shape": 4
         "type": "spatial"
       - "dspace":
         - "Output"
@@ -106,5 +106,5 @@
       - "einsum": "Conv2"
         "target": 3
         "type": "compute"
-    "type": "sequential"
+    "type": "pipeline"
   "type": "fused"
