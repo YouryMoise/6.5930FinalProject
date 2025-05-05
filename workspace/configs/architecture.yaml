@@ -49,8 +49,8 @@
       "width": 8
     "name": "PE"
     "spatial":
-      "meshX": 8
-      "meshY": 8
+      "meshX": 16
+      "meshY": 16
   - !Component
     "attributes":
       "datawidth": 8
