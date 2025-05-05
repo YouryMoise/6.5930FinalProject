@@ -44,8 +44,8 @@
     "attributes":
       "datawidth": 8
       "depth": 8
-      "meshX": 8
-      "meshY": 8
+      "meshX": 16
+      "meshY": 16
       "width": 8
     "name": "PE"
     "spatial":
